@@ -1,3 +1,4 @@
+
 'use strict';
 const pug = require('pug');
 const assert = require('assert');
@@ -15,6 +16,8 @@ const html = pug.renderFile('./views/posts.pug', {
   user: 'guest1'
 });
 
+// XSS 脆弱性のためのテストコード
 // スクリプトタグがエスケープされて含まれていることをチェック
 assert(html.indexOf('&lt;script&gt;alert(\'test\');&lt;/script&gt;') > 0);
+console.log(html.indexOf('&lt;script&gt;alert(\'test\');&lt;/script&gt;'));
 console.log('テストが正常に完了しました');
